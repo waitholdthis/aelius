@@ -71,48 +71,81 @@ const SPECIALTIES = [
     title: 'SECURE ARCHITECTURES & DEVICES',
     body: 'Unified security solutions from point-to-point comms to complex secure networks. Device-agnostic across LAN, WAN, cellular, satellite, and IoT — globally.',
     icon: <IconShield />,
+    modal: [
+      `Our team of professionals has advanced expertise in unified security solutions ranging from small point to point communications to complex secure networks. We focus on providing specialized design and integration services that incorporate the protection of high value systems and information. We accomplish this by customizing network architectures to fit the target. This includes incorporating physical and logical network environments across multiple platforms.`,
+      `AELIUS engineers' support and design skills are device agnostic and provide a seamless, customized experience based on requirements. Our diverse background enables the team to rapidly determine the best device solution to support the requirements. If there isn't a device available to meet the requirements, our team has the ability, based on requirements, to engineer specialized devices within our lab environment. Our skills cover LAN, WAN, cellular, satellite, IoT, sensors, and computing devices across platforms or within standalone environments around the world.`,
+    ],
   },
   {
     index: '02',
     title: 'PROFESSIONAL SERVICES & SME',
     body: 'User-defined development under complex conditions. Cross-functional teams serving Special Operations, Intelligence, and law enforcement communities.',
     icon: <IconUsers />,
+    modal: [
+      `AELIUS' professional services are intrinsically tied to our core as a company. Our SMEs and engineers utilize their knowledge, skills, abilities, and experience to provide a wide array of technical solutions.`,
+      `Our approach to this is a user-defined developmental process to satisfy unique customer requirements under complex conditions, to achieve time-sensitive, mission-driven objectives. Using this methodology in a cross-functional team, working as closely as possible with the end user, allows AELIUS to effectively and rapidly leverage our collective knowledge base to ensure customer satisfaction and mission success.`,
+      `AELIUS has an unwavering commitment to provide world-class professional services to our brethren in Special Operations, the Intelligence professions, and law enforcement. Every day, we bring our best efforts and abilities to bear for these communities to not only protect their operations but also to ensure the survivability of their personnel.`,
+    ],
   },
   {
     index: '03',
     title: 'ADVANCED TECH INTEGRATION',
     body: 'Concept to prototype at the speed of combat. Off-the-shelf solutions fused with custom development through rapid iteration and MVP delivery.',
     icon: <IconLayers />,
+    modal: [
+      `AELIUS' cross-functional team leverages past experience in engineering, computer science, machine learning, autonomy, and 3D visualization to rapidly identify off-the-shelf solutions combined with past technical development and performance to target and resolve the technical endstate. The team continues to directly involve the operator during each phase of the development resulting in a rapid iteration over minimal viable product (MVP) solutions that increasingly meet user needs and can be transitioned to other industry partners.`,
+      `This process allows the team to go from concept to prototype at the speed of combat, resulting in viable government-owned solutions in days — not months or years.`,
+    ],
   },
   {
     index: '04',
     title: 'CYBER SECURITY & TRAINING',
     body: 'Recognized experts in digital forensics and computer security. Training covers operating anonymously online — and precisely how to breach that anonymity.',
     icon: <IconLock />,
+    modal: [
+      `AELIUS's staff includes known experts in the computer security and digital forensics fields. We have been actively involved with anonymity communities and have assisted organizations that use these technologies for both online anonymity and adversarial identification. Our background spans the entire network architecture, from application security to networking, and includes human biometrics and profiling.`,
+      `We have developed multiple courses that teach users about their cyber presence in the online and real world. One of them, Cyber Security Awareness (CSA), teaches analysts how to be anonymous online and how to breach online anonymity. This hands-on course demonstrates the different ways of covering your online digital trail and explores techniques that are used for following people who do not want to be tracked. CSA is a flexible course and can be tuned to your specific organization's needs.`,
+    ],
   },
   {
     index: '05',
     title: 'RESEARCH & DEVELOPMENT',
     body: 'Trusted R&D partner for big data and advanced manufacturing. Bridging the contracting and integration gap for technologies at the edge of the achievable.',
     icon: <IconAtom />,
+    modal: [
+      `AELIUS is a trusted partner for conducting Research and Development for our clients. Ranging from big data down to the smallest low power processors, or the latest in application of advanced manufacturing, AELIUS specializes in bringing cutting edge computer science and engineering R&D concepts through prototypes to practical applications.`,
+      `For new external capabilities, AELIUS brings years of unique experience in finding, evaluating and onboarding new technologies into existing enterprises. When a startup or lab concept is not able to bridge the contracting, legal, or manufacturing gap into integration with larger efforts, AELIUS can step in as a guide and protector of the nascent efforts until they reach fruition.`,
+    ],
   },
   {
     index: '06',
     title: 'ENGINEERING DEVELOPMENT & DESIGN',
     body: 'Custom solutions through end-user collaboration. CAD, FEA analysis, and VR models for iterative refinement — concept to field-ready hardware.',
     icon: <IconGear />,
+    modal: [
+      `The AELIUS team of diverse engineers and industrial designers start with the end-use customer in mind. We research the problem and work with the end user to create a problem statement. The problem statement guides the project's timeline to manage expectations for a successful implementation of the solution.`,
+      `Talking to the end user, the team creates custom solutions utilizing digital sketches and descriptions of potential design aspects. AELIUS then uses a diverse collection of CAD packages to build models for use in FEA and other analytic approaches. Finally all of this is combined in a hands-on or VR model so the end user can examine the use and give feedback to improve the next iteration.`,
+    ],
   },
   {
     index: '07',
     title: 'INNOVATIVE SOLUTIONS',
     body: 'Novel, existing, or previously out-dated technologies applied to unsolvable problems — including autonomous ground vehicles with LiDAR and machine vision.',
     icon: <IconBulb />,
+    modal: [
+      `AELIUS's team of experts approaches problem solving from far outside normal use practices. Our solutions focus on what is available and what the customer's challenges are.`,
+      `Our team pushes the industry boundaries by identifying unique ways to use novel, existing, or even previously thought of as out-dated technologies to get the job done in the most efficient manner. The AELIUS team has implemented IoT sensors with technology as diverse as LiDAR and Raspi based Cameras. By combining these together, projects like unmanned ground vehicles (UGVs) can determine the safest routes for underground workers.`,
+    ],
   },
   {
     index: '08',
     title: 'COMPUTER SCIENCE & DATA ANALYSIS',
     body: 'Advanced data science on massive, complex datasets. Specialists in secure network design and spatially-aware systems — raw signal into decisive clarity.',
     icon: <IconChart />,
+    modal: [
+      `AELIUS's team of expert computer scientists solves problems ranging from secure network design and implementation to the creation and deployment of spatially-aware, small form-factor, remotely-piloted vehicles. We take on the most challenging problems and help craft elegant and meaningful solutions.`,
+      `Our data science professionals employ leading-edge techniques to transform and manipulate data, often billions of records per day, for a better understanding of its implications and to create actionable knowledge.`,
+    ],
   },
 ]
 
@@ -199,13 +232,87 @@ function OriginModal({ onClose }) {
   )
 }
 
-function SpecialtyCard({ index, title, body, icon, delay, inView }) {
+function SpecialtyModal({ specialty, onClose }) {
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-[150] flex items-center justify-center px-6"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-void/80 backdrop-blur-xl" aria-hidden="true" />
+      <motion.div
+        initial={{ opacity: 0, y: 28, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 16, scale: 0.97 }}
+        transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full max-w-2xl bg-navy/70 border border-white/[0.07] p-8 md:p-12 shadow-2xl max-h-[85vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="specialty-modal-title"
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-arctic/35 hover:text-arctic transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass"
+        >
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="w-4 h-4">
+            <path d="M2 2l12 12M14 2L2 14" />
+          </svg>
+        </button>
+
+        <div className="font-code text-[0.58rem] text-brass/55 tracking-[0.28em] uppercase mb-4">
+          // {specialty.index}
+        </div>
+
+        <div className="flex items-center gap-4 mb-6">
+          <div className="w-7 h-7 text-signal shrink-0" aria-hidden="true">
+            {specialty.icon}
+          </div>
+          <h3
+            id="specialty-modal-title"
+            className="font-display text-[clamp(1.4rem,4vw,2.2rem)] leading-[0.95] text-arctic"
+          >
+            {specialty.title}
+          </h3>
+        </div>
+
+        <div className="w-16 h-px bg-brass/40 mb-7" />
+
+        <div className="flex flex-col gap-5">
+          {specialty.modal.map((para, i) => (
+            <p key={i} className="font-body text-arctic/60 text-[0.9375rem] leading-[1.95]">
+              {para}
+            </p>
+          ))}
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
+function SpecialtyCard({ index, title, body, icon, modal, delay, inView, onClick }) {
+  const hasModal = Boolean(modal)
   return (
     <motion.div
       initial={{ opacity: 0, y: 36 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative glass-card p-6 hover:-translate-y-1.5 transition-transform duration-300 overflow-hidden cursor-default"
+      className={`group relative glass-card p-6 hover:-translate-y-1.5 transition-transform duration-300 overflow-hidden ${hasModal ? 'cursor-pointer' : 'cursor-default'}`}
+      onClick={hasModal ? onClick : undefined}
+      role={hasModal ? 'button' : undefined}
+      tabIndex={hasModal ? 0 : undefined}
+      onKeyDown={hasModal ? (e) => { if (e.key === 'Enter' || e.key === ' ') onClick() } : undefined}
+      aria-label={hasModal ? `Learn more about ${title}` : undefined}
     >
       {/* Top accent bar: brass → signal on hover */}
       <div className="absolute top-0 left-0 right-0 h-[2px] bg-brass/38 group-hover:bg-signal/55 transition-colors duration-300" />
@@ -237,6 +344,16 @@ function SpecialtyCard({ index, title, body, icon, delay, inView }) {
       <p className="font-body text-arctic/48 text-xs leading-[1.88]">
         {body}
       </p>
+
+      {/* Learn more hint */}
+      {hasModal && (
+        <div className="mt-4 flex items-center gap-1.5 font-heading text-[0.65rem] text-brass/50 tracking-[0.12em] uppercase group-hover:text-brass/80 transition-colors duration-200">
+          Learn More
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-2.5 h-2.5 group-hover:translate-x-0.5 transition-transform duration-200" aria-hidden="true">
+            <path d="M2 6h8M6.5 2.5L10 6l-3.5 3.5" />
+          </svg>
+        </div>
+      )}
     </motion.div>
   )
 }
@@ -247,6 +364,7 @@ export default function Specialties() {
   const headInView = useInView(headRef, { once: true, margin: '-80px' })
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' })
   const [showOriginModal, setShowOriginModal] = useState(false)
+  const [activeSpecialty, setActiveSpecialty] = useState(null)
 
   return (
     <section id="specialties" className="relative pt-28 lg:pt-36 pb-0 overflow-hidden">
@@ -312,7 +430,13 @@ export default function Specialties() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mb-20"
         >
           {SPECIALTIES.map((s, i) => (
-            <SpecialtyCard key={s.index} {...s} delay={i * 0.07} inView={gridInView} />
+            <SpecialtyCard
+              key={s.index}
+              {...s}
+              delay={i * 0.07}
+              inView={gridInView}
+              onClick={() => setActiveSpecialty(s)}
+            />
           ))}
         </div>
 
@@ -400,6 +524,12 @@ export default function Specialties() {
 
       <AnimatePresence>
         {showOriginModal && <OriginModal onClose={() => setShowOriginModal(false)} />}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {activeSpecialty && (
+          <SpecialtyModal specialty={activeSpecialty} onClose={() => setActiveSpecialty(null)} />
+        )}
       </AnimatePresence>
     </section>
   )
