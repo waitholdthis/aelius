@@ -1,6 +1,7 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useParticles } from '../hooks/useParticles'
+import ContactModalWrapper from './ContactModal'
 
 const LINES = ['THE MISSION', "DOESN'T WAIT."]
 
@@ -18,8 +19,9 @@ const line = {
 }
 
 export default function CTA() {
-  const canvasRef = useRef(null)
+  const canvasRef  = useRef(null)
   const sectionRef = useRef(null)
+  const [showModal, setShowModal] = useState(false)
   useParticles(canvasRef, { count: 32, rgb: '200,169,110', linkDist: 110 })
   const inView = useInView(sectionRef, { once: true, margin: '-80px' })
 
@@ -29,14 +31,12 @@ export default function CTA() {
       ref={sectionRef}
       className="relative min-h-[80vh] flex flex-col items-center justify-center py-28 overflow-hidden bg-void"
     >
-      {/* Sparse particle canvas (meditative pace vs hero density) */}
       <canvas
         ref={canvasRef}
         aria-hidden="true"
         className="absolute inset-0 w-full h-full opacity-55"
       />
 
-      {/* Radial darkening vignette */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
@@ -91,12 +91,12 @@ export default function CTA() {
           transition={{ delay: 0.52, duration: 0.45 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-14"
         >
-          <a
-            href="mailto:info@aeliustech.com"
+          <button
+            onClick={() => setShowModal(true)}
             className="font-heading text-sm font-semibold tracking-[0.1em] uppercase px-10 py-4 bg-brass text-void border border-brass hover:bg-transparent hover:text-brass transition-all duration-200 w-full sm:w-auto text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
           >
             Send Secure Transmission
-          </a>
+          </button>
           <a
             href="#careers"
             className="font-heading text-sm font-medium tracking-[0.09em] uppercase text-arctic/42 hover:text-signal transition-colors duration-200 focus-visible:outline-none focus-visible:text-signal"
@@ -122,6 +122,8 @@ export default function CTA() {
           <span>8150 Leesburg Pike, Ste. 810 · Vienna, VA 22182</span>
         </motion.div>
       </div>
+
+      <ContactModalWrapper show={showModal} onClose={() => setShowModal(false)} />
     </section>
   )
 }
