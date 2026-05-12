@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 /**
  * Tracks the cursor and paints a radial signal-blue glow behind all content.
@@ -6,10 +6,13 @@ import { useEffect } from 'react'
  * Desktop only — touch devices skip it entirely.
  */
 export default function CursorSpotlight() {
+  const spotlightRef = useRef(null)
+
   useEffect(() => {
     const onMove = (e) => {
-      document.documentElement.style.setProperty('--cx', `${e.clientX}px`)
-      document.documentElement.style.setProperty('--cy', `${e.clientY}px`)
+      if (!spotlightRef.current) return
+      spotlightRef.current.style.setProperty('--cx', `${e.clientX}px`)
+      spotlightRef.current.style.setProperty('--cy', `${e.clientY}px`)
     }
     window.addEventListener('mousemove', onMove, { passive: true })
     return () => window.removeEventListener('mousemove', onMove)
@@ -17,6 +20,7 @@ export default function CursorSpotlight() {
 
   return (
     <div
+      ref={spotlightRef}
       aria-hidden="true"
       className="pointer-events-none fixed inset-0 z-30 hidden md:block"
       style={{
