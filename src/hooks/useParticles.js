@@ -16,17 +16,14 @@ export function useParticles(canvasRef, { count = 60, rgb = '200,169,110', linkD
     const resize = () => {
       canvas.width  = canvas.offsetWidth
       canvas.height = canvas.offsetHeight
-      // Only generate new particles if they don't already exist
-      if (pts.length === 0) {
-        pts = Array.from({ length: count }, () => ({
-          x:  Math.random() * canvas.width,
-          y:  Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.22,
-          vy: (Math.random() - 0.5) * 0.22,
-          r:  Math.random() * 1.1 + 0.4,
-          a:  Math.random() * 0.35 + 0.08,
-        }))
-      }
+      pts = Array.from({ length: count }, () => ({
+        x:  Math.random() * canvas.width,
+        y:  Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.22,
+        vy: (Math.random() - 0.5) * 0.22,
+        r:  Math.random() * 1.1 + 0.4,
+        a:  Math.random() * 0.35 + 0.08,
+      }))
     }
 
     const tick = () => {

@@ -81,7 +81,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="label-tag tracking-[0.3em] mb-8 block"
+          className="label-tag tracking-[0.15em] sm:tracking-[0.3em] mb-8 block"
         >
           // Aelius Exploitation Technologies
         </motion.span>
@@ -96,7 +96,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           aria-hidden="true"
-          className="font-display text-[clamp(3.8rem,13.5vw,13.5rem)] leading-[0.92] text-arctic mb-7"
+          className="font-display text-[clamp(3rem,10.5vw,10.5rem)] leading-[0.92] text-arctic mb-7"
         >
           {HEADLINE.map((line, i) => (
             <motion.span key={i} variants={word} className="block">

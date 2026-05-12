@@ -45,12 +45,6 @@ function ResumeModal({ onClose }) {
     return () => window.removeEventListener('keydown', handler)
   }, [onClose])
 
-  // Lock body scroll while modal is open
-  useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
-  }, [])
-
   const handleSubmit = (e) => {
     e.preventDefault()
     const subject = encodeURIComponent(`Resume Submission — ${form.name}`)

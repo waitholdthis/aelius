@@ -249,7 +249,7 @@ export default function Specialties() {
   const [showOriginModal, setShowOriginModal] = useState(false)
 
   return (
-    <section id="specialties" className="relative py-28 lg:py-36 overflow-hidden">
+    <section id="specialties" className="relative pt-28 lg:pt-36 pb-0 overflow-hidden">
       {/* Ghost "FOCUS." atmospheric display text */}
       <div
         aria-hidden="true"
