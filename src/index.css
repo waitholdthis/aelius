@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #040A0F;
+    color: #E8EDF2;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(200, 169, 110, 0.25);
+    color: #E8EDF2;
+  }
+
+  ::-webkit-scrollbar       { width: 3px; }
+  ::-webkit-scrollbar-track { background: #040A0F; }
+  ::-webkit-scrollbar-thumb { background: #C8A96E; border-radius: 2px; }
+}
+
+@layer utilities {
+  /* Frosted glass card */
+  .glass-card {
+    background: rgba(13, 27, 42, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-top-color: rgba(0, 180, 216, 0.18);
+  }
+
+  /* Centered gradient rule */
+  .brass-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C8A96E, transparent);
+  }
+
+  /* Small-caps section designator label */
+  .label-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #00B4D8;
+  }
+
+  /* Stat sub-label */
+  .stat-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232, 237, 242, 0.35);
+  }
+}
+
+/* Respect reduced-motion OS preference (skill rule: reduced-motion) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
