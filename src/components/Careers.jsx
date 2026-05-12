@@ -201,7 +201,7 @@ export default function Careers() {
   const [showContactModal, setShowContactModal] = useState(false)
 
   return (
-    <section id="careers" className="relative py-28 lg:py-36 overflow-hidden">
+    <section id="careers" className="relative py-16 lg:py-36 overflow-hidden">
       {/* Ghost "SERVE." atmospheric display text */}
       <div
         aria-hidden="true"
@@ -229,7 +229,7 @@ export default function Careers() {
           initial={{ opacity: 0 }}
           animate={headInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
-          className="label-tag tracking-[0.25em] mb-12 block"
+          className="label-tag tracking-[0.25em] mb-6 sm:mb-12 block"
         >
           // Join Our Team
         </motion.span>

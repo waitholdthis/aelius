@@ -29,7 +29,7 @@ export default function CTA() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative min-h-[80vh] flex flex-col items-center justify-center py-28 overflow-hidden bg-void"
+      className="relative min-h-[80vh] flex flex-col items-center justify-center py-16 sm:py-28 overflow-hidden bg-void"
     >
       <canvas
         ref={canvasRef}
@@ -78,7 +78,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 18 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.38, duration: 0.5 }}
-          className="font-body text-arctic/52 text-base md:text-lg max-w-xl mx-auto leading-[1.85] mb-12"
+          className="font-body text-arctic/52 text-base md:text-lg max-w-xl mx-auto leading-[1.85] mb-8 sm:mb-12"
         >
           Whether you're facing an unsolvable data challenge, a technology
           integration gap, or a development timeline that no one else will
@@ -89,7 +89,7 @@ export default function CTA() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.52, duration: 0.45 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-14"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-8 sm:mb-14"
         >
           <button
             onClick={() => setShowModal(true)}

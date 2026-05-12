@@ -367,7 +367,7 @@ export default function Specialties() {
   const [activeSpecialty, setActiveSpecialty] = useState(null)
 
   return (
-    <section id="specialties" className="relative pt-28 lg:pt-36 pb-0 overflow-hidden">
+    <section id="specialties" className="relative pt-16 lg:pt-36 pb-0 overflow-hidden">
       {/* Ghost "FOCUS." atmospheric display text */}
       <div
         aria-hidden="true"
@@ -394,7 +394,7 @@ export default function Specialties() {
           initial={{ opacity: 0 }}
           animate={headInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
-          className="label-tag tracking-[0.25em] mb-12 block"
+          className="label-tag tracking-[0.25em] mb-6 sm:mb-12 block"
         >
           // Focus & Specialties
         </motion.span>
@@ -415,19 +415,19 @@ export default function Specialties() {
           initial={{ opacity: 0, y: 20 }}
           animate={headInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.25, duration: 0.5 }}
-          className="font-body text-arctic/52 text-base md:text-lg max-w-2xl leading-[1.85] mb-14"
+          className="font-body text-arctic/52 text-base md:text-lg max-w-2xl leading-[1.85] mb-8 sm:mb-14"
         >
           Eight specialized disciplines. One uncompromising mandate: deliver
           what no one else will commit to — on timeline, on target, at the
           speed of the mission.
         </motion.p>
 
-        <div className="brass-divider mb-14 opacity-35" />
+        <div className="brass-divider mb-8 sm:mb-14 opacity-35" />
 
         {/* 4×2 card grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mb-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mb-12 sm:mb-20"
         >
           {SPECIALTIES.map((s, i) => (
             <SpecialtyCard
@@ -441,7 +441,7 @@ export default function Specialties() {
         </div>
 
         {/* Strategic partners strip */}
-        <div className="border-t border-white/[0.05] pt-12">
+        <div className="border-t border-white/[0.05] pt-8 sm:pt-12">
           <motion.div
             initial={{ opacity: 0 }}
             animate={gridInView ? { opacity: 1 } : {}}
@@ -492,7 +492,7 @@ export default function Specialties() {
           initial={{ opacity: 0, y: 20 }}
           animate={gridInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.8, duration: 0.5 }}
-          className="mt-14 border-t border-white/[0.05] pt-12 flex flex-col items-center text-center gap-5"
+          className="mt-8 sm:mt-14 border-t border-white/[0.05] pt-8 sm:pt-12 flex flex-col items-center text-center gap-5"
         >
           <img
             src={`${import.meta.env.BASE_URL}origin-story.png`}

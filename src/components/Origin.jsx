@@ -119,7 +119,7 @@ export default function Origin() {
   const [activeModal, setActiveModal] = useState(null)
 
   return (
-    <section id="origin" ref={ref} className="relative py-28 lg:py-36 overflow-hidden">
+    <section id="origin" ref={ref} className="relative py-16 lg:py-36 overflow-hidden">
       {/* Ghost "FAMILY." display text — purely atmospheric */}
       <div
         aria-hidden="true"
@@ -141,13 +141,13 @@ export default function Origin() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5 }}
-          className="label-tag tracking-[0.25em] mb-12 block"
+          className="label-tag tracking-[0.25em] mb-6 sm:mb-12 block"
         >
           // Origin Protocol
         </motion.span>
 
         {/* Two-column layout: copy (3) + timeline (2) */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-14 lg:gap-20 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-20 items-start">
 
           {/* Left: copy */}
           <div className="lg:col-span-3">

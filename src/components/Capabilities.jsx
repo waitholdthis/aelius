@@ -155,7 +155,7 @@ export default function Capabilities() {
   const statsIn    = useInView(statsRef,   { once: true, margin: '-40px' })
 
   return (
-    <section id="capabilities" className="relative py-28 lg:py-36">
+    <section id="capabilities" className="relative py-16 lg:py-36">
       {/* Subtle navy tint */}
       <div className="absolute inset-0 bg-navy/20" aria-hidden="true" />
 
@@ -164,7 +164,7 @@ export default function Capabilities() {
         {/* Stats strip */}
         <div
           ref={statsRef}
-          className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-0 mb-20"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-0 mb-10 sm:mb-20"
         >
           {STATS.map((s, i) => (
             <div key={s.label} className="flex items-center gap-0 sm:gap-0">
@@ -177,7 +177,7 @@ export default function Capabilities() {
         </div>
 
         {/* Section heading */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <motion.span
             initial={{ opacity: 0 }}
             animate={sectionIn ? { opacity: 1 } : {}}
