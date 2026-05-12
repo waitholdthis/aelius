@@ -117,9 +117,9 @@ const SPECIALTIES = [
 ]
 
 const COLLABORATORS = [
-  { name: 'HackerFactor', logo: '/hackerfactor.png', href: 'https://hackerfactor.com/' },
-  { name: 'HackRod Studio Manufacturing', logo: '/hackrod.png' },
-  { name: 'NCMS', logo: '/ncms.png', href: 'https://ncms.org/' },
+  { name: 'HackerFactor', logo: `${import.meta.env.BASE_URL}hackerfactor.png`, href: 'https://hackerfactor.com/' },
+  { name: 'HackRod Studio Manufacturing', logo: `${import.meta.env.BASE_URL}hackrod.png` },
+  { name: 'NCMS', logo: `${import.meta.env.BASE_URL}ncms.png`, href: 'https://ncms.org/' },
 ]
 
 const ORIGIN_MODAL = {
@@ -172,7 +172,7 @@ function OriginModal({ onClose }) {
 
         <div className="flex items-start gap-6 mb-6">
           <img
-            src="/origin-story.png"
+            src={`${import.meta.env.BASE_URL}origin-story.png`}
             alt="Aelius Origin"
             className="w-20 h-20 object-cover flex-shrink-0 border border-white/[0.07]"
             style={{ filter: 'brightness(0.9) contrast(1.05)' }}
@@ -371,7 +371,7 @@ export default function Specialties() {
           className="mt-14 border-t border-white/[0.05] pt-12 flex flex-col items-center text-center gap-5"
         >
           <img
-            src="/origin-story.png"
+            src={`${import.meta.env.BASE_URL}origin-story.png`}
             alt="Aelius Origin"
             className="w-20 h-20 object-contain"
             style={{ filter: 'drop-shadow(0 0 6px rgba(200,169,110,0.55)) drop-shadow(0 0 18px rgba(200,169,110,0.25)) brightness(1.05)' }}

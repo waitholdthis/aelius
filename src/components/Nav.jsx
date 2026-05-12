@@ -46,7 +46,7 @@ export default function Nav() {
             aria-label="AELIUS Exploitation Technologies — home"
           >
             <img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt="AELIUS Exploitation Technologies"
               className="h-12 w-auto"
               style={{

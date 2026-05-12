@@ -37,7 +37,7 @@ export default function Intro() {
           {/* Centered logo */}
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.img
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
               alt="AELIUS"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}

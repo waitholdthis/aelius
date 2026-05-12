@@ -46,7 +46,7 @@ export default function Hero() {
         preload="auto"
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover"
-        src="/Aelius.mp4"
+        src={`${import.meta.env.BASE_URL}Aelius.mp4`}
       />
 
       {/* Base darkening layer so text always reads over any video content */}
