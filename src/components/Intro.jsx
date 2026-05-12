@@ -12,7 +12,7 @@ export default function Intro() {
     document.body.style.overflow = 'hidden'
     const t = setTimeout(() => {
       setVisible(false)
-      setTimeout(() => { document.body.style.overflow = '' }, EXIT_MS)
+      setTimeout(() => { document.body.style.overflow = ''; window.scrollTo(0, 0) }, EXIT_MS)
     }, DURATION)
     return () => clearTimeout(t)
   }, [])

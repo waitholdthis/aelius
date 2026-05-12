@@ -1,5 +1,5 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
 
 /* ── Icons ── */
 const IconShield = () => (
@@ -122,6 +122,83 @@ const COLLABORATORS = [
   { name: 'NCMS', logo: '/ncms.png', href: 'https://ncms.org/' },
 ]
 
+const ORIGIN_MODAL = {
+  label: 'Aelius Origin',
+  content: [
+    `Finding a name for a new technology company is never easy. The founders are big movie buffs; both are also US Army Veterans and of Italian heritage. Various movie quotes and imagery shaped how they wanted to kick off their new company: as high-tech bleeding edge technologists, forward-thinking, actively helping our government and warfighters, and with a solid ethical backbone, the name had to mean something and not just sound cool.`,
+    `While watching the Ridley Scott movie Gladiator, starring Russell Crowe as a once great Roman General Maximus Decimus Meridius who becomes a slave / gladiator to avenge his family, he is referred to as Aelius Meridius as he is announced on the Coliseum arena. Aelius, it turns out, means "family of" in Latin – so "of the Family of Meridius" – perfect. As Joe was explaining it all to his partner, Guy Filippelli, Guy's response was an email from GoDaddy having just bought domain rights to "Aelius Exploitation Technologies". Our name therefore stands for "Family of Exploitation Technologies" and has ties both to the founders' Italian culture and honoring their military service and our nation's sacrifices.`,
+  ],
+}
+
+function OriginModal({ onClose }) {
+  useEffect(() => {
+    const handler = (e) => { if (e.key === 'Escape') onClose() }
+    window.addEventListener('keydown', handler)
+    return () => window.removeEventListener('keydown', handler)
+  }, [onClose])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-[150] flex items-center justify-center px-6"
+      onClick={onClose}
+    >
+      <div className="absolute inset-0 bg-void/80 backdrop-blur-xl" aria-hidden="true" />
+      <motion.div
+        initial={{ opacity: 0, y: 28, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 16, scale: 0.97 }}
+        transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 w-full max-w-2xl bg-navy/70 border border-white/[0.07] p-8 md:p-12 shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="origin-modal-title"
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close"
+          className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-arctic/35 hover:text-arctic transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brass"
+        >
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="w-4 h-4">
+            <path d="M2 2l12 12M14 2L2 14" />
+          </svg>
+        </button>
+
+        <div className="font-code text-[0.58rem] text-brass/55 tracking-[0.28em] uppercase mb-4">// AELIUS</div>
+
+        <div className="flex items-start gap-6 mb-6">
+          <img
+            src="/origin-story.png"
+            alt="Aelius Origin"
+            className="w-20 h-20 object-cover flex-shrink-0 border border-white/[0.07]"
+            style={{ filter: 'brightness(0.9) contrast(1.05)' }}
+          />
+          <h3
+            id="origin-modal-title"
+            className="font-display text-[clamp(1.8rem,5vw,3rem)] leading-[0.95] text-arctic"
+          >
+            {ORIGIN_MODAL.label.toUpperCase()}
+          </h3>
+        </div>
+
+        <div className="w-16 h-px bg-brass/40 mb-7" />
+
+        <div className="flex flex-col gap-5">
+          {ORIGIN_MODAL.content.map((para, i) => (
+            <p key={i} className="font-body text-arctic/60 text-[0.9375rem] leading-[1.95]">
+              {para}
+            </p>
+          ))}
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 function SpecialtyCard({ index, title, body, icon, delay, inView }) {
   return (
     <motion.div
@@ -169,6 +246,7 @@ export default function Specialties() {
   const gridRef = useRef(null)
   const headInView = useInView(headRef, { once: true, margin: '-80px' })
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' })
+  const [showOriginModal, setShowOriginModal] = useState(false)
 
   return (
     <section id="specialties" className="relative py-28 lg:py-36 overflow-hidden">
@@ -239,7 +317,7 @@ export default function Specialties() {
         </div>
 
         {/* Strategic partners strip */}
-        <div className="border-t border-white/[0.05] pt-10">
+        <div className="border-t border-white/[0.05] pt-12">
           <motion.div
             initial={{ opacity: 0 }}
             animate={gridInView ? { opacity: 1 } : {}}
@@ -284,7 +362,45 @@ export default function Specialties() {
             </div>
           </motion.div>
         </div>
+
+        {/* Aelius Origin strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={gridInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.8, duration: 0.5 }}
+          className="mt-14 border-t border-white/[0.05] pt-12 flex flex-col items-center text-center gap-5"
+        >
+          <img
+            src="/origin-story.png"
+            alt="Aelius Origin"
+            className="w-20 h-20 object-contain"
+            style={{ filter: 'drop-shadow(0 0 6px rgba(200,169,110,0.55)) drop-shadow(0 0 18px rgba(200,169,110,0.25)) brightness(1.05)' }}
+          />
+          <div>
+            <div className="font-code text-[0.58rem] text-brass/55 tracking-[0.28em] uppercase mb-2">// The Name</div>
+            <h3 className="font-display text-[clamp(1.4rem,3vw,2rem)] text-arctic leading-[0.95] mb-3">
+              AELIUS ORIGIN
+            </h3>
+            <p className="font-body text-arctic/45 text-sm leading-[1.85] max-w-lg mx-auto mb-4">
+              How two US Army Veterans — movie buffs of Italian heritage — found the perfect name while watching Gladiator.
+            </p>
+            <button
+              onClick={() => setShowOriginModal(true)}
+              className="group inline-flex items-center gap-2 font-heading text-[0.78rem] font-medium text-brass/70 tracking-[0.1em] uppercase hover:text-brass transition-colors duration-200 focus-visible:outline-none focus-visible:text-brass"
+            >
+              Read the Story
+              <svg aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                className="w-3 h-3 group-hover:translate-x-0.5 transition-transform duration-200">
+                <path d="M2 6h8M6.5 2.5L10 6l-3.5 3.5" />
+              </svg>
+            </button>
+          </div>
+        </motion.div>
       </div>
+
+      <AnimatePresence>
+        {showOriginModal && <OriginModal onClose={() => setShowOriginModal(false)} />}
+      </AnimatePresence>
     </section>
   )
 }
