@@ -246,7 +246,7 @@ export default function Origin() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.62 + i * 0.1, duration: 0.48 }}
-              className={`text-center sm:text-left ${i > 0 ? 'sm:pl-12 sm:border-l sm:border-brass/18' : ''}`}
+              className={`text-center ${i > 0 ? 'sm:pl-12 sm:border-l sm:border-brass/18' : ''}`}
             >
               <div className="font-heading font-bold text-brass text-[0.72rem] tracking-[0.22em] uppercase mb-2">
                 {v.title}
