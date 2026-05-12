@@ -92,7 +92,7 @@ export default function CTA() {
           className="flex flex-col sm:flex-row items-center justify-center gap-5 mb-14"
         >
           <a
-            href="mailto:contact@aeliustech.com"
+            href="mailto:info@aeliustech.com"
             className="font-heading text-sm font-semibold tracking-[0.1em] uppercase px-10 py-4 bg-brass text-void border border-brass hover:bg-transparent hover:text-brass transition-all duration-200 w-full sm:w-auto text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
           >
             Send Secure Transmission
@@ -105,16 +105,22 @@ export default function CTA() {
           </a>
         </motion.div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ delay: 0.68, duration: 0.4 }}
-          className="font-code text-[0.62rem] text-arctic/22 tracking-[0.16em] uppercase"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 font-code text-[0.62rem] text-arctic/28 tracking-[0.14em] uppercase"
         >
-          Secure Comms: contact@aeliustech.com
-          <span className="mx-4 text-brass/25" aria-hidden="true">|</span>
-          Clearance Required for Classified Inquiries
-        </motion.p>
+          <a href="mailto:info@aeliustech.com" className="hover:text-brass/60 transition-colors duration-200">
+            info@aeliustech.com
+          </a>
+          <span className="hidden sm:block text-brass/20" aria-hidden="true">|</span>
+          <a href="mailto:media@aeliustech.com" className="hover:text-brass/60 transition-colors duration-200">
+            media@aeliustech.com
+          </a>
+          <span className="hidden sm:block text-brass/20" aria-hidden="true">|</span>
+          <span>8150 Leesburg Pike, Ste. 810 · Vienna, VA 22182</span>
+        </motion.div>
       </div>
     </section>
   )

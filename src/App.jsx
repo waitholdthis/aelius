@@ -1,3 +1,4 @@
+import Intro        from './components/Intro'
 import Nav          from './components/Nav'
 import Hero         from './components/Hero'
 import Capabilities from './components/Capabilities'
@@ -11,6 +12,7 @@ import CursorSpot   from './components/CursorSpotlight'
 export default function App() {
   return (
     <div className="relative bg-void">
+      <Intro />
       <CursorSpot />
       <Nav />
       <main>

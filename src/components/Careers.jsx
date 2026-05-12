@@ -201,13 +201,13 @@ export default function Careers() {
           className="flex flex-col sm:flex-row items-center gap-5 mb-14"
         >
           <a
-            href="mailto:contact@aeliustech.com"
+            href="mailto:info@aeliustech.com"
             className="font-heading text-sm font-semibold tracking-[0.1em] uppercase px-10 py-4 bg-brass text-void border border-brass hover:bg-transparent hover:text-brass transition-all duration-200 w-full sm:w-auto text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brass"
           >
             Submit Your Resume
           </a>
           <a
-            href="mailto:contact@aeliustech.com"
+            href="mailto:info@aeliustech.com"
             className="font-heading text-sm font-medium tracking-[0.09em] uppercase text-arctic/42 hover:text-signal transition-colors duration-200 focus-visible:outline-none focus-visible:text-signal"
           >
             General Inquiries →

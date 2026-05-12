@@ -246,10 +246,10 @@ export default function Specialties() {
             transition={{ delay: 0.62, duration: 0.5 }}
             className="flex flex-col items-center gap-6"
           >
-            <span className="font-heading text-sm font-bold text-arctic tracking-[0.22em] uppercase">
+            <span className="font-heading text-[2rem] font-bold text-arctic tracking-[0.22em] uppercase">
               Strategic Partners
             </span>
-            <div className="flex items-center gap-10 flex-wrap justify-center">
+            <div className="flex items-center gap-12 flex-wrap justify-center">
               {COLLABORATORS.map(({ name, logo, href }) => {
                 const inner = (
                   <>
@@ -258,11 +258,11 @@ export default function Specialties() {
                         src={logo}
                         alt=""
                         aria-hidden="true"
-                        className="h-7 w-auto"
+                        className="h-12 w-auto"
                         style={{ filter: 'brightness(0) invert(1) opacity(0.45)' }}
                       />
                     )}
-                    <span className="font-heading text-[0.68rem] font-medium text-arctic/40 tracking-[0.08em]">
+                    <span className="font-heading text-[1.1rem] font-medium text-arctic/40 tracking-[0.08em]">
                       {name}
                     </span>
                   </>
